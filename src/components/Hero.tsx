@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Hero() {
   return (
-    <section className="min-h-[80vh] flex items-center py-16 px-6 lg:px-12">
+    <section className="min-h-[80vh] flex items-center py-10 px-6 lg:px-12">
       <div className="max-w-7xl mx-auto w-full">
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left Content */}
