@@ -20,7 +20,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
             >
-              AI Expert
+              AI Product
             </motion.h1>
 
             <motion.p
@@ -30,7 +30,7 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.4 }}
             >
-              Building AI-powered products that drive real user impact
+              Figuring out how to make AI actually useful for people
             </motion.p>
 
             <motion.div

@@ -65,12 +65,7 @@ export default function About() {
             className="text-lg text-[#252523] font-light leading-relaxed max-w-4xl mb-12"
             style={{ fontFamily: "var(--font-league-spartan)" }}
           >
-            I lead the strategy and execution of AI-powered, consumer-facing
-            products—defining roadmaps, validating with rapid prototypes, and
-            turning insights into clear specs. Strong in LLM workflows,
-            personalization, matching systems, APIs, and rapid iteration. I work
-            hands-on with engineering and design to ship fast, improve funnels,
-            and drive real user impact.
+            Most of my time goes into understanding what people actually need from AI products, then working with engineers and designers to build it. I prototype quickly, learn from what breaks, and iterate until something clicks. The interesting part is usually in the details that nobody thought to specify upfront.
           </motion.p>
 
           {/* Skills Grid */}

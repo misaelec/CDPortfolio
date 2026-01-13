@@ -17,27 +17,27 @@ const projects: Project[] = [
     id: 1,
     title: "Food Delivery Chatbot",
     description:
-      "A conversational AI assistant for food delivery services. Handles order placement, real-time tracking, and customer support through natural dialogue.",
+      "Ordering food through conversation instead of menus. The tricky part was making it feel helpful without being annoying when things go wrong.",
     embedUrl:
       "https://embed.figma.com/design/mMdNqpCsFn22frtihBkp68/-Projects----Food-Delivery?embed-host=share",
-    tags: ["Conversational AI", "Chatbot", "Consumer Product"],
+    tags: ["Conversational AI", "Chatbot"],
   },
   {
     id: 2,
     title: "Nationwide Sell Assistant",
     description:
-      "An AI-powered sales chatbot designed to qualify leads, answer product questions, and guide customers through the purchase journey at scale.",
+      "Helping people find what they need without the pressure of a traditional sales call. Turns out the best approach is often just answering questions honestly.",
     embedUrl:
       "https://embed.figma.com/design/Csrb1HefbKLxoBPn25YIMd/-Projects----Nationwide-Sell?embed-host=share",
-    tags: ["Conversational AI", "Chatbot", "Sales"],
+    tags: ["Conversational AI", "Chatbot"],
   },
   {
     id: 3,
     title: "Agentic Bot Diagram Kit",
     description:
-      "A structured diagramming template for mapping AI agent workflows. Visualize interactions across four key lanes—User, Agent, Internal, and External—to design clear, scalable agentic systems.",
+      "A template for mapping out how AI agents actually work. Four lanes: what the user sees, what the agent does, and the internal and external systems involved. Free on Figma Community.",
     communityUrl: "https://www.figma.com/community/file/1065000099888405411",
-    tags: ["Figma Community", "AI Diagrams", "Workflow Design"],
+    tags: ["Figma Community", "Open Source"],
   },
 ];
 
@@ -93,7 +93,7 @@ export default function Projects() {
             className="text-lg text-[#999991] font-light mb-12 max-w-2xl leading-relaxed"
             style={{ fontFamily: "var(--font-league-spartan)" }}
           >
-            A selection of product work showcasing strategy, design, and execution.
+            A few things I&apos;ve worked on. Each one taught me something I didn&apos;t expect.
           </motion.p>
 
           {/* Projects Grid */}
@@ -215,7 +215,7 @@ export default function Projects() {
               className="text-lg text-[#999991] font-light mb-6"
               style={{ fontFamily: "var(--font-league-spartan)" }}
             >
-              Interested in seeing more work or discussing a project?
+              Working on something interesting? I&apos;d like to hear about it.
             </p>
             <motion.a
               href="#contact"

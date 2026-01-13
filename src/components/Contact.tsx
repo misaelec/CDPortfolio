@@ -103,7 +103,7 @@ export default function Contact() {
             className="text-lg text-[#999991] font-light mb-12 max-w-2xl leading-relaxed"
             style={{ fontFamily: "var(--font-league-spartan)" }}
           >
-            Let&apos;s discuss how I can help bring your product vision to life.
+            If you&apos;re building something with AI and want to think through it together, reach out.
           </motion.p>
 
           <div className="grid lg:grid-cols-2 gap-16">
@@ -169,7 +169,7 @@ export default function Contact() {
                     rows={5}
                     className="w-full px-4 py-3 bg-transparent border border-[#999991] rounded-lg focus:outline-none focus:border-[#252523] transition-colors text-[#252523] resize-none"
                     style={{ fontFamily: "var(--font-league-spartan)" }}
-                    placeholder="Tell me about your project..."
+                    placeholder="What's on your mind?"
                   />
                 </div>
 
@@ -235,15 +235,13 @@ export default function Contact() {
                   className="text-xl font-medium text-[#252523] mb-4"
                   style={{ fontFamily: "var(--font-league-spartan)" }}
                 >
-                  Let&apos;s Connect
+                  Say hello
                 </h3>
                 <p
                   className="text-lg text-[#999991] font-light leading-relaxed"
                   style={{ fontFamily: "var(--font-league-spartan)" }}
                 >
-                  I&apos;m always interested in discussing new opportunities,
-                  product challenges, or just having a conversation about the
-                  future of AI-powered products.
+                  Whether it&apos;s a project, a question, or just something you noticed about AI lately that made you think. I enjoy those conversations.
                 </p>
               </div>
 
@@ -252,7 +250,7 @@ export default function Contact() {
                   className="text-sm font-medium text-[#999991] mb-4 uppercase tracking-wider"
                   style={{ fontFamily: "var(--font-league-spartan)" }}
                 >
-                  Find me on
+                  Elsewhere
                 </h4>
                 <div className="flex gap-4">
                   {socialLinks.map((link, index) => (
