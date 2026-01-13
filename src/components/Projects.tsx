@@ -19,11 +19,20 @@ const projects: Project[] = [
     description:
       "A comprehensive food delivery application designed with user experience at its core. Features intuitive navigation, real-time order tracking, and a seamless checkout flow.",
     embedUrl:
-      "https://embed.figma.com/design/D5hKNfal4JoyyRflPW2Bbt/Food-Delivery?node-id=11647-1354&embed-host=share&scaling=scale-down-width",
+      "https://embed.figma.com/design/mMdNqpCsFn22frtihBkp68/-Projects----Food-Delivery?embed-host=share",
     tags: ["UX Design", "Mobile App", "Consumer Product"],
   },
   {
     id: 2,
+    title: "Nationwide Sell",
+    description:
+      "A sales platform designed to streamline the selling process nationwide. Built with scalability and user efficiency in mind.",
+    embedUrl:
+      "https://embed.figma.com/design/Csrb1HefbKLxoBPn25YIMd/-Projects----Nationwide-Sell?embed-host=share",
+    tags: ["UX Design", "Web Platform", "Sales"],
+  },
+  {
+    id: 3,
     title: "Agentic Bot Diagram Kit",
     description:
       "A structured diagramming template for mapping AI agent workflows. Visualize interactions across four key lanes—User, Agent, Internal, and External—to design clear, scalable agentic systems.",
