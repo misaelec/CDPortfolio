@@ -145,6 +145,40 @@ export default function Experience() {
               Along the way: improved containment rates to 95% on a banking support product, cut deployment times from weeks to days by standardizing our approach, and helped teams ship faster by documenting what actually works. The numbers matter, but what I remember most is the problems that seemed impossible until they weren&apos;t.
             </p>
           </motion.div>
+
+          <motion.div
+            variants={itemVariants}
+            className="mt-12 text-center"
+          >
+            <p
+              className="text-lg text-[#999991] font-light mb-6"
+              style={{ fontFamily: "var(--font-league-spartan)" }}
+            >
+              Working on something interesting? I&apos;d like to hear about it.
+            </p>
+            <motion.a
+              href="#contact"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              className="inline-flex items-center gap-2 px-8 py-3 bg-[#252523] text-[#fffff1] rounded-full text-base font-medium transition-all duration-300 hover:bg-[#3a3a38] cursor-pointer"
+              style={{ fontFamily: "var(--font-league-spartan)" }}
+            >
+              Get in Touch
+              <svg
+                className="w-5 h-5"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17 8l4 4m0 0l-4 4m4-4H3"
+                />
+              </svg>
+            </motion.a>
+          </motion.div>
         </motion.div>
       </div>
     </section>

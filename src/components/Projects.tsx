@@ -184,41 +184,6 @@ export default function Projects() {
             >
               Click to explore
             </motion.p>
-
-            {/* Call to Action */}
-            <motion.div
-              variants={itemVariants}
-              className="mt-12 text-center"
-            >
-              <p
-                className="text-lg text-[#999991] font-light mb-6"
-                style={{ fontFamily: "var(--font-league-spartan)" }}
-              >
-                Working on something interesting? I&apos;d like to hear about it.
-              </p>
-              <motion.a
-                href="#contact"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-2 px-8 py-3 bg-[#252523] text-[#fffff1] rounded-full text-base font-medium transition-all duration-300 hover:bg-[#3a3a38]"
-                style={{ fontFamily: "var(--font-league-spartan)" }}
-              >
-                Get in Touch
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M17 8l4 4m0 0l-4 4m4-4H3"
-                  />
-                </svg>
-              </motion.a>
-            </motion.div>
           </motion.div>
         </div>
       </section>
