@@ -7,7 +7,8 @@ interface Project {
   id: number;
   title: string;
   description: string;
-  embedUrl: string;
+  embedUrl?: string;
+  communityUrl?: string;
   tags: string[];
 }
 
@@ -20,6 +21,14 @@ const projects: Project[] = [
     embedUrl:
       "https://embed.figma.com/design/D5hKNfal4JoyyRflPW2Bbt/Food-Delivery?node-id=11647-1354&embed-host=share",
     tags: ["UX Design", "Mobile App", "Consumer Product"],
+  },
+  {
+    id: 2,
+    title: "Figma iOS 15 UI Kit",
+    description:
+      "A comprehensive UI kit for Figma featuring iOS 15 components, templates, and design patterns. Free resource for the design community with 23k+ downloads.",
+    communityUrl: "https://www.figma.com/community/file/1065000099888405411",
+    tags: ["Figma Community", "UI Kit", "iOS Design"],
   },
 ];
 
@@ -114,22 +123,76 @@ export default function Projects() {
                   </div>
                 </div>
 
-                {/* Figma Embed Container */}
-                <motion.div
-                  initial={{ opacity: 0, scale: 0.98 }}
-                  animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                  transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
-                  className="iframe-container bg-white"
-                >
-                  <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                    <iframe
-                      className="absolute inset-0 w-full h-full"
-                      src={project.embedUrl}
-                      style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
-                      allowFullScreen
-                    />
-                  </div>
-                </motion.div>
+                {/* Figma Embed or Community Link */}
+                {project.embedUrl ? (
+                  <motion.div
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
+                    className="iframe-container bg-white"
+                  >
+                    <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                      <iframe
+                        className="absolute inset-0 w-full h-full"
+                        src={project.embedUrl}
+                        style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
+                        allowFullScreen
+                      />
+                    </div>
+                  </motion.div>
+                ) : project.communityUrl ? (
+                  <motion.a
+                    href={project.communityUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    initial={{ opacity: 0, scale: 0.98 }}
+                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
+                    transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
+                    whileHover={{ scale: 1.01, y: -4 }}
+                    className="block rounded-2xl border border-[#999991] bg-white p-8 md:p-12 transition-all duration-300 hover:border-[#252523] hover:shadow-lg"
+                  >
+                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+                      <div className="flex items-center gap-4">
+                        <div className="w-12 h-12 rounded-xl bg-[#252523] flex items-center justify-center">
+                          <svg className="w-6 h-6 text-[#fffff1]" viewBox="0 0 38 57" fill="currentColor">
+                            <path d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38C25.9804 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.0196 19 28.5Z"/>
+                            <path d="M0 47.5C0 44.9804 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98044 38 9.5 38H19V47.5C19 50.0196 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.0196 57 9.5 57C6.98044 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.0196 0 47.5Z"/>
+                            <path d="M19 0V19H28.5C31.0196 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.0196 38 9.5C38 6.98044 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.0196 0 28.5 0H19Z"/>
+                            <path d="M0 9.5C0 12.0196 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98044 19 9.5 19H19V0H9.5C6.98044 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.98044 0 9.5Z"/>
+                            <path d="M0 28.5C0 31.0196 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98044 38 9.5 38H19V19H9.5C6.98044 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.9804 0 28.5Z"/>
+                          </svg>
+                        </div>
+                        <div>
+                          <span
+                            className="text-lg font-medium text-[#252523]"
+                            style={{ fontFamily: "var(--font-league-spartan)" }}
+                          >
+                            View on Figma Community
+                          </span>
+                          <p
+                            className="text-sm text-[#999991]"
+                            style={{ fontFamily: "var(--font-league-spartan)" }}
+                          >
+                            Free to duplicate and use
+                          </p>
+                        </div>
+                      </div>
+                      <svg
+                        className="w-6 h-6 text-[#999991] group-hover:text-[#252523] transition-colors"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
+                    </div>
+                  </motion.a>
+                ) : null}
               </motion.div>
             ))}
           </div>

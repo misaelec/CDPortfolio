@@ -285,7 +285,7 @@ export default function Contact() {
                       className="block text-3xl font-medium text-[#252523]"
                       style={{ fontFamily: "var(--font-league-spartan)" }}
                     >
-                      5+
+                      7+
                     </motion.span>
                     <span
                       className="text-sm text-[#999991]"

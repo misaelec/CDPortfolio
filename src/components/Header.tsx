@@ -35,7 +35,9 @@ export default function Header() {
       }`}
     >
       <nav className="max-w-7xl mx-auto px-6 lg:px-12">
-        <div className="flex items-center justify-between h-16 border-b border-[#999991]">
+        <div className={`flex items-center justify-between h-16 transition-all duration-300 ${
+          isScrolled ? "" : "border-b border-[#999991]"
+        }`}>
           {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.02 }}
