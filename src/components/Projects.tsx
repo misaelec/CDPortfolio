@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, useInView, Variants } from "framer-motion";
-import { useRef } from "react";
+import { motion, useInView, Variants, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
 
 interface Project {
   id: number;
@@ -44,6 +44,7 @@ const projects: Project[] = [
 export default function Projects() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
+  const [selectedProject, setSelectedProject] = useState<Project | null>(null);
 
   const containerVariants: Variants = {
     hidden: { opacity: 0 },
@@ -67,127 +68,67 @@ export default function Projects() {
     },
   };
 
+  const handleProjectClick = (project: Project) => {
+    if (project.communityUrl) {
+      window.open(project.communityUrl, "_blank");
+    } else {
+      setSelectedProject(project);
+    }
+  };
+
   return (
-    <section
-      id="projects"
-      ref={ref}
-      className="py-10 px-6 lg:px-12 bg-[#fffff1]"
-    >
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          variants={containerVariants}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-        >
-          {/* Section Title */}
-          <motion.h2
-            variants={itemVariants}
-            className="text-4xl md:text-5xl font-medium text-[#252523] mb-6"
-            style={{ fontFamily: "var(--font-league-spartan)" }}
+    <>
+      <section
+        id="projects"
+        ref={ref}
+        className="py-10 px-6 lg:px-12 bg-[#fffff1]"
+      >
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            variants={containerVariants}
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
           >
-            Projects
-          </motion.h2>
+            <motion.h2
+              variants={itemVariants}
+              className="text-4xl md:text-5xl font-medium text-[#252523] mb-6"
+              style={{ fontFamily: "var(--font-league-spartan)" }}
+            >
+              Projects
+            </motion.h2>
 
-          <motion.p
-            variants={itemVariants}
-            className="text-lg text-[#999991] font-light mb-12 max-w-2xl leading-relaxed"
-            style={{ fontFamily: "var(--font-league-spartan)" }}
-          >
-            A few things I&apos;ve worked on. Each one taught me something I didn&apos;t expect.
-          </motion.p>
+            <motion.p
+              variants={itemVariants}
+              className="text-lg text-[#999991] font-light mb-12 max-w-2xl leading-relaxed"
+              style={{ fontFamily: "var(--font-league-spartan)" }}
+            >
+              A few things I&apos;ve worked on. Each one taught me something I didn&apos;t expect.
+            </motion.p>
 
-          {/* Projects Grid */}
-          <div className="space-y-12">
-            {projects.map((project, index) => (
-              <motion.div
-                key={project.id}
-                variants={itemVariants}
-                className="group"
-              >
-                {/* Project Header */}
-                <div className="mb-6">
-                  <h3
-                    className="text-2xl md:text-3xl font-medium text-[#252523] mb-4"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    {project.title}
-                  </h3>
-                  <p
-                    className="text-lg text-[#252523] font-light max-w-3xl mb-4 leading-relaxed"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    {project.description}
-                  </p>
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-2">
-                    {project.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="px-3 py-1 text-sm border border-[#999991] rounded-full text-[#999991]"
-                        style={{ fontFamily: "var(--font-league-spartan)" }}
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                {/* Figma Embed or Community Link */}
-                {project.embedUrl ? (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
-                    className="iframe-container bg-white"
-                  >
-                    <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-                      <iframe
-                        className="absolute inset-0 w-full h-full"
-                        src={project.embedUrl}
-                        style={{ border: "1px solid rgba(0, 0, 0, 0.1)" }}
-                        allowFullScreen
-                      />
-                    </div>
-                  </motion.div>
-                ) : project.communityUrl ? (
-                  <motion.a
-                    href={project.communityUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    initial={{ opacity: 0, scale: 0.98 }}
-                    animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                    transition={{ delay: 0.3 + index * 0.2, duration: 0.6 }}
-                    whileHover={{ scale: 1.01, y: -4 }}
-                    className="block rounded-2xl border border-[#999991] bg-white p-8 md:p-12 transition-all duration-300 hover:border-[#252523] hover:shadow-lg"
-                  >
-                    <div className="flex flex-col md:flex-row items-center justify-between gap-6">
-                      <div className="flex items-center gap-4">
-                        <div className="w-12 h-12 rounded-xl bg-[#252523] flex items-center justify-center">
-                          <svg className="w-6 h-6 text-[#fffff1]" viewBox="0 0 38 57" fill="currentColor">
-                            <path d="M19 28.5C19 25.9804 20.0009 23.5641 21.7825 21.7825C23.5641 20.0009 25.9804 19 28.5 19C31.0196 19 33.4359 20.0009 35.2175 21.7825C36.9991 23.5641 38 25.9804 38 28.5C38 31.0196 36.9991 33.4359 35.2175 35.2175C33.4359 36.9991 31.0196 38 28.5 38C25.9804 38 23.5641 36.9991 21.7825 35.2175C20.0009 33.4359 19 31.0196 19 28.5Z"/>
-                            <path d="M0 47.5C0 44.9804 1.00089 42.5641 2.78249 40.7825C4.56408 39.0009 6.98044 38 9.5 38H19V47.5C19 50.0196 17.9991 52.4359 16.2175 54.2175C14.4359 55.9991 12.0196 57 9.5 57C6.98044 57 4.56408 55.9991 2.78249 54.2175C1.00089 52.4359 0 50.0196 0 47.5Z"/>
-                            <path d="M19 0V19H28.5C31.0196 19 33.4359 17.9991 35.2175 16.2175C36.9991 14.4359 38 12.0196 38 9.5C38 6.98044 36.9991 4.56408 35.2175 2.78249C33.4359 1.00089 31.0196 0 28.5 0H19Z"/>
-                            <path d="M0 9.5C0 12.0196 1.00089 14.4359 2.78249 16.2175C4.56408 17.9991 6.98044 19 9.5 19H19V0H9.5C6.98044 0 4.56408 1.00089 2.78249 2.78249C1.00089 4.56408 0 6.98044 0 9.5Z"/>
-                            <path d="M0 28.5C0 31.0196 1.00089 33.4359 2.78249 35.2175C4.56408 36.9991 6.98044 38 9.5 38H19V19H9.5C6.98044 19 4.56408 20.0009 2.78249 21.7825C1.00089 23.5641 0 25.9804 0 28.5Z"/>
-                          </svg>
-                        </div>
-                        <div>
-                          <span
-                            className="text-lg font-medium text-[#252523]"
-                            style={{ fontFamily: "var(--font-league-spartan)" }}
-                          >
-                            View on Figma Community
-                          </span>
-                          <p
-                            className="text-sm text-[#999991]"
-                            style={{ fontFamily: "var(--font-league-spartan)" }}
-                          >
-                            Free to duplicate and use
-                          </p>
-                        </div>
-                      </div>
+            {/* Projects Gallery */}
+            <motion.div
+              variants={itemVariants}
+              className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 scrollbar-hide"
+              style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
+            >
+              {projects.map((project) => (
+                <motion.button
+                  key={project.id}
+                  onClick={() => handleProjectClick(project)}
+                  whileHover={{ y: -8 }}
+                  whileTap={{ scale: 0.98 }}
+                  className="flex-shrink-0 w-80 text-left bg-white rounded-2xl border border-[#999991]/50 p-6 transition-all duration-300 hover:border-[#252523] hover:shadow-lg group"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <h3
+                      className="text-xl font-medium text-[#252523]"
+                      style={{ fontFamily: "var(--font-league-spartan)" }}
+                    >
+                      {project.title}
+                    </h3>
+                    {project.communityUrl ? (
                       <svg
-                        className="w-6 h-6 text-[#999991] group-hover:text-[#252523] transition-colors"
+                        className="w-5 h-5 text-[#999991] group-hover:text-[#252523] transition-colors flex-shrink-0"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -199,49 +140,189 @@ export default function Projects() {
                           d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
                         />
                       </svg>
-                    </div>
-                  </motion.a>
-                ) : null}
-              </motion.div>
-            ))}
-          </div>
+                    ) : (
+                      <svg
+                        className="w-5 h-5 text-[#999991] group-hover:text-[#252523] transition-colors flex-shrink-0"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M4 8V4m0 0h4M4 4l5 5m11-1V4m0 0h-4m4 0l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                        />
+                      </svg>
+                    )}
+                  </div>
+                  <p
+                    className="text-sm text-[#999991] font-light leading-relaxed mb-4 line-clamp-3"
+                    style={{ fontFamily: "var(--font-league-spartan)" }}
+                  >
+                    {project.description}
+                  </p>
+                  <div className="flex flex-wrap gap-2">
+                    {project.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="px-2 py-1 text-xs border border-[#999991]/50 rounded-full text-[#999991]"
+                        style={{ fontFamily: "var(--font-league-spartan)" }}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </motion.button>
+              ))}
+            </motion.div>
 
-          {/* Call to Action */}
-          <motion.div
-            variants={itemVariants}
-            className="mt-12 text-center"
-          >
-            <p
-              className="text-lg text-[#999991] font-light mb-6"
+            <motion.p
+              variants={itemVariants}
+              className="text-sm text-[#999991] mt-4"
               style={{ fontFamily: "var(--font-league-spartan)" }}
             >
-              Working on something interesting? I&apos;d like to hear about it.
-            </p>
-            <motion.a
-              href="#contact"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              className="inline-flex items-center gap-2 px-8 py-3 bg-[#252523] text-[#fffff1] rounded-full text-base font-medium transition-all duration-300 hover:bg-[#3a3a38]"
-              style={{ fontFamily: "var(--font-league-spartan)" }}
+              Click to explore
+            </motion.p>
+
+            {/* Call to Action */}
+            <motion.div
+              variants={itemVariants}
+              className="mt-12 text-center"
             >
-              Get in Touch
-              <svg
-                className="w-5 h-5"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
+              <p
+                className="text-lg text-[#999991] font-light mb-6"
+                style={{ fontFamily: "var(--font-league-spartan)" }}
               >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M17 8l4 4m0 0l-4 4m4-4H3"
-                />
-              </svg>
-            </motion.a>
+                Working on something interesting? I&apos;d like to hear about it.
+              </p>
+              <motion.a
+                href="#contact"
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 px-8 py-3 bg-[#252523] text-[#fffff1] rounded-full text-base font-medium transition-all duration-300 hover:bg-[#3a3a38]"
+                style={{ fontFamily: "var(--font-league-spartan)" }}
+              >
+                Get in Touch
+                <svg
+                  className="w-5 h-5"
+                  fill="none"
+                  stroke="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M17 8l4 4m0 0l-4 4m4-4H3"
+                  />
+                </svg>
+              </motion.a>
+            </motion.div>
           </motion.div>
-        </motion.div>
-      </div>
-    </section>
+        </div>
+      </section>
+
+      {/* Modal */}
+      <AnimatePresence>
+        {selectedProject && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 flex items-center justify-center p-4 md:p-8"
+            onClick={() => setSelectedProject(null)}
+          >
+            {/* Backdrop */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="absolute inset-0 bg-[#252523]/80 backdrop-blur-sm"
+            />
+
+            {/* Modal Content */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95, y: 20 }}
+              transition={{ duration: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="relative w-full max-w-5xl max-h-[90vh] bg-[#fffff1] rounded-2xl overflow-hidden"
+              onClick={(e) => e.stopPropagation()}
+            >
+              {/* Modal Header */}
+              <div className="flex items-start justify-between p-6 border-b border-[#999991]/30">
+                <div>
+                  <h3
+                    className="text-2xl font-medium text-[#252523] mb-2"
+                    style={{ fontFamily: "var(--font-league-spartan)" }}
+                  >
+                    {selectedProject.title}
+                  </h3>
+                  <p
+                    className="text-base text-[#999991] font-light max-w-2xl"
+                    style={{ fontFamily: "var(--font-league-spartan)" }}
+                  >
+                    {selectedProject.description}
+                  </p>
+                </div>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="p-2 text-[#999991] hover:text-[#252523] transition-colors"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M6 18L18 6M6 6l12 12"
+                    />
+                  </svg>
+                </button>
+              </div>
+
+              {/* Modal Body - Figma Embed */}
+              {selectedProject.embedUrl && (
+                <div className="relative w-full" style={{ height: "60vh" }}>
+                  <iframe
+                    className="absolute inset-0 w-full h-full"
+                    src={selectedProject.embedUrl}
+                    style={{ border: "none" }}
+                    allowFullScreen
+                  />
+                </div>
+              )}
+
+              {/* Modal Footer */}
+              <div className="flex items-center justify-between p-4 border-t border-[#999991]/30">
+                <div className="flex flex-wrap gap-2">
+                  {selectedProject.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="px-3 py-1 text-sm border border-[#999991] rounded-full text-[#999991]"
+                      style={{ fontFamily: "var(--font-league-spartan)" }}
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+                <button
+                  onClick={() => setSelectedProject(null)}
+                  className="px-4 py-2 text-sm text-[#999991] hover:text-[#252523] transition-colors"
+                  style={{ fontFamily: "var(--font-league-spartan)" }}
+                >
+                  Close
+                </button>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

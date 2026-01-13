@@ -93,3 +93,8 @@ section {
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
+
+/* Hide scrollbar for horizontal scroll */
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
