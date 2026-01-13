@@ -57,16 +57,15 @@ export default function Contact() {
             If you&apos;re building something with AI and want to think through it together, reach out.
           </motion.p>
 
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* LinkedIn CTA */}
-            <motion.div variants={itemVariants}>
-              <p
-                className="text-lg text-[#252523] font-light leading-relaxed mb-6"
-                style={{ fontFamily: "var(--font-league-spartan)" }}
-              >
-                Whether it&apos;s a project, a question, or just something you noticed about AI lately that made you think. I enjoy those conversations.
-              </p>
+          <motion.div variants={itemVariants}>
+            <p
+              className="text-lg text-[#252523] font-light leading-relaxed mb-6 max-w-xl"
+              style={{ fontFamily: "var(--font-league-spartan)" }}
+            >
+              Whether it&apos;s a project, a question, or just something you noticed about AI lately that made you think. I enjoy those conversations.
+            </p>
 
+            <div className="flex flex-wrap gap-4">
               <motion.a
                 href="https://linkedin.com/in/misaelec"
                 target="_blank"
@@ -88,7 +87,7 @@ export default function Contact() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="inline-flex items-center gap-3 px-6 py-4 ml-0 md:ml-4 mt-4 md:mt-0 border border-[#999991] text-[#252523] rounded-xl font-medium transition-all duration-300 hover:border-[#252523] cursor-pointer"
+                className="inline-flex items-center gap-3 px-6 py-4 border border-[#999991] text-[#252523] rounded-xl font-medium transition-all duration-300 hover:border-[#252523] cursor-pointer"
                 style={{ fontFamily: "var(--font-league-spartan)" }}
               >
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -96,48 +95,8 @@ export default function Contact() {
                 </svg>
                 GitHub
               </motion.a>
-            </motion.div>
-
-            {/* Stats */}
-            <motion.div variants={itemVariants} className="flex items-end">
-              <div className="grid grid-cols-2 gap-8 w-full">
-                <div>
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.8 }}
-                    className="block text-4xl font-medium text-[#252523]"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    7+
-                  </motion.span>
-                  <span
-                    className="text-sm text-[#999991]"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    Years Experience
-                  </span>
-                </div>
-                <div>
-                  <motion.span
-                    initial={{ opacity: 0 }}
-                    animate={isInView ? { opacity: 1 } : {}}
-                    transition={{ delay: 0.9 }}
-                    className="block text-4xl font-medium text-[#252523]"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    20+
-                  </motion.span>
-                  <span
-                    className="text-sm text-[#999991]"
-                    style={{ fontFamily: "var(--font-league-spartan)" }}
-                  >
-                    Products Shipped
-                  </span>
-                </div>
-              </div>
-            </motion.div>
-          </div>
+            </div>
+          </motion.div>
         </motion.div>
       </div>
     </section>
