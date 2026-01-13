@@ -19,7 +19,7 @@ const projects: Project[] = [
     description:
       "A comprehensive food delivery application designed with user experience at its core. Features intuitive navigation, real-time order tracking, and a seamless checkout flow.",
     embedUrl:
-      "https://embed.figma.com/design/D5hKNfal4JoyyRflPW2Bbt/Food-Delivery?node-id=11647-1354&embed-host=share&scaling=min-zoom",
+      "https://embed.figma.com/design/D5hKNfal4JoyyRflPW2Bbt/Food-Delivery?node-id=11647-1354&embed-host=share&scaling=scale-down-width",
     tags: ["UX Design", "Mobile App", "Consumer Product"],
   },
   {
