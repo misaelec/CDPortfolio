@@ -15,21 +15,21 @@ interface Project {
 const projects: Project[] = [
   {
     id: 1,
-    title: "Food Delivery App",
+    title: "Food Delivery Chatbot",
     description:
-      "A comprehensive food delivery application designed with user experience at its core. Features intuitive navigation, real-time order tracking, and a seamless checkout flow.",
+      "A conversational AI assistant for food delivery services. Handles order placement, real-time tracking, and customer support through natural dialogue.",
     embedUrl:
       "https://embed.figma.com/design/mMdNqpCsFn22frtihBkp68/-Projects----Food-Delivery?embed-host=share",
-    tags: ["UX Design", "Mobile App", "Consumer Product"],
+    tags: ["Conversational AI", "Chatbot", "Consumer Product"],
   },
   {
     id: 2,
-    title: "Nationwide Sell",
+    title: "Nationwide Sell Assistant",
     description:
-      "A sales platform designed to streamline the selling process nationwide. Built with scalability and user efficiency in mind.",
+      "An AI-powered sales chatbot designed to qualify leads, answer product questions, and guide customers through the purchase journey at scale.",
     embedUrl:
       "https://embed.figma.com/design/Csrb1HefbKLxoBPn25YIMd/-Projects----Nationwide-Sell?embed-host=share",
-    tags: ["UX Design", "Web Platform", "Sales"],
+    tags: ["Conversational AI", "Chatbot", "Sales"],
   },
   {
     id: 3,
