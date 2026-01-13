@@ -24,11 +24,11 @@ const projects: Project[] = [
   },
   {
     id: 2,
-    title: "Figma iOS 15 UI Kit",
+    title: "Agentic Bot Diagram Kit",
     description:
-      "A comprehensive UI kit for Figma featuring iOS 15 components, templates, and design patterns. Free resource for the design community with 23k+ downloads.",
+      "A structured diagramming template for mapping AI agent workflows. Visualize interactions across four key lanes—User, Agent, Internal, and External—to design clear, scalable agentic systems.",
     communityUrl: "https://www.figma.com/community/file/1065000099888405411",
-    tags: ["Figma Community", "UI Kit", "iOS Design"],
+    tags: ["Figma Community", "AI Diagrams", "Workflow Design"],
   },
 ];
 
