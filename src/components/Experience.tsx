@@ -21,7 +21,7 @@ const roles: Role[] = [
   {
     company: "Stripe",
     title: "AI Operations Support",
-    period: "2024",
+    period: "2024 - 2025",
     description:
       "Built internal tools and workflows to help support teams work faster. Spent a lot of time documenting patterns that kept coming up, so others wouldn't have to solve the same problems twice.",
   },
