@@ -108,7 +108,7 @@ export default function Projects() {
             {/* Projects Gallery */}
             <motion.div
               variants={itemVariants}
-              className="flex gap-6 overflow-x-auto pb-4 -mx-6 px-6 scrollbar-hide"
+              className="flex gap-6 overflow-x-auto pt-4 pb-8 -mx-6 px-6 scrollbar-hide"
               style={{ scrollbarWidth: "none", msOverflowStyle: "none" }}
             >
               {projects.map((project) => (
@@ -117,7 +117,7 @@ export default function Projects() {
                   onClick={() => handleProjectClick(project)}
                   whileHover={{ y: -8 }}
                   whileTap={{ scale: 0.98 }}
-                  className="flex-shrink-0 w-80 text-left bg-white rounded-2xl border border-[#999991]/50 p-6 transition-all duration-300 hover:border-[#252523] hover:shadow-lg group"
+                  className="flex-shrink-0 w-80 text-left bg-white rounded-2xl border border-[#999991]/50 p-6 transition-all duration-300 hover:border-[#252523] hover:shadow-lg group cursor-pointer"
                 >
                   <div className="flex items-start justify-between mb-4">
                     <h3
@@ -268,7 +268,7 @@ export default function Projects() {
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="p-2 text-[#999991] hover:text-[#252523] transition-colors"
+                  className="p-2 text-[#999991] hover:text-[#252523] transition-colors cursor-pointer"
                 >
                   <svg
                     className="w-6 h-6"
@@ -313,7 +313,7 @@ export default function Projects() {
                 </div>
                 <button
                   onClick={() => setSelectedProject(null)}
-                  className="px-4 py-2 text-sm text-[#999991] hover:text-[#252523] transition-colors"
+                  className="px-4 py-2 text-sm text-[#999991] hover:text-[#252523] transition-colors cursor-pointer"
                   style={{ fontFamily: "var(--font-league-spartan)" }}
                 >
                   Close
